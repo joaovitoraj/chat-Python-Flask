@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat em Tempo Real</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div id="login-screen">
+        <h1>Bem-vindo ao Chat</h1>
+        <input id="username" type="text" placeholder="Digite seu nome">
+        <button onclick="enterChat()">Entrar</button>
+    </div>
+    <main id="window" style="display: none;">
+        <section id="chat-view">
+            <div id="chat-box-display" class="chat-box"></div>
+            <section id="chat-box-input">
+                <input id="message" class="input" type="text" placeholder="Digite sua mensagem">
+                <button class="send-button" onclick="sendMessage()">Enviar</button>
+            </section>
+        </section>
+    </main>
+    <script>
+        const socket = io();
+        let username = '';
+        function enterChat() {
+            const inputUsername = document.getElementById('username').value.trim();
+            if (inputUsername) {
+                username = inputUsername;
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('window').style.display = 'block';
+            } else {
+                alert('Por favor, insira seu nome para entrar no chat.');
+            }
+        }
+        const usernameInput = document.getElementById('username');
+        usernameInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                enterChat();
+            }
+        });
+        socket.on('message', function(data) {
+            const { message, senderName } = data;
+            const chatBoxDisplay = document.getElementById('chat-box-display');
+            const messageElement = document.createElement('div');
+            const sender = document.createElement('strong');
+            sender.textContent = senderName + ': ';
+            messageElement.appendChild(sender);
+            messageElement.appendChild(document.createTextNode(message));
+            messageElement.className = senderName === username ? 'send-message-bubble' : 'message-bubble';
+            chatBoxDisplay.appendChild(messageElement);
+            chatBoxDisplay.scrollTop = chatBoxDisplay.scrollHeight;
+        });
+        function sendMessage() {
+            const inputField = document.getElementById('message');
+            const message = inputField.value.trim();
+            if (message) {
+                socket.emit('message', { message, senderName: username });
+                inputField.value = '';
+            } else {
+                alert('Por favor, digite uma mensagem antes de enviar.');
+            }
+        }
+        const inputField = document.getElementById('message');
+        inputField.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
