@@ -319,7 +319,7 @@ Depois de concluir as etapas anteriores, ao acessar `http://127.0.0.1:4040`, voc
 ## Autoria e Contribuições
 Este projeto foi desenvolvido por:
 - [João Vitor Araújo](https://www.linkedin.com/in/joaovitoraj/)
-- [Rafael Valverde](https://github.com/usuario2)
+- [Rafael Valverde](https://github.com/Rafousz)
 
 Com contribuição de: [Jansen Alves](http://github.com/janseealves/)
 
