@@ -42,7 +42,7 @@ Caso não tenha o Python instalado, visite a [página oficial](https://www.pytho
  
 3. Clone o repositório:
    ```bash
-   git clone https://github.com/usuario/repo.git
+   git clone https://github.com/joaovitoraj/chat-Python-Flask
    ```
    Caso não saiba usar o Git, visite [visite este tutorial](https://rogerdudler.github.io/git-guide/index.pt_BR.html).
 
