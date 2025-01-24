@@ -104,8 +104,8 @@ if __name__ == '__main__':
             const inputUsername = document.getElementById('username').value.trim();
             if (inputUsername) {
                 username = inputUsername; // Armazena o nome do usuário
-                document.getElementById('login-screen').style.display = 'none'; // Esconde a tela de login
-                document.getElementById('window').style.display = 'block'; // Mostra o chat
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('window').style.display = 'block';
             } else {
                 alert('Por favor, insira seu nome para entrar no chat.');
             }
