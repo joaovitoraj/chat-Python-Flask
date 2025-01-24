@@ -103,7 +103,7 @@ if __name__ == '__main__':
         function enterChat() {
             const inputUsername = document.getElementById('username').value.trim();
             if (inputUsername) {
-                username = inputUsername; // Armazena o nome do usuário
+                username = inputUsername;
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('window').style.display = 'block';
             } else {
