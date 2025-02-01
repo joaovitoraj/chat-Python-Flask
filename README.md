@@ -45,8 +45,9 @@ Caso não tenha o Python instalado, visite a [página oficial](https://www.pytho
    git clone https://github.com/joaovitoraj/chat-Python-Flask
    ```
    Caso não saiba usar o Git, visite [este tutorial](https://rogerdudler.github.io/git-guide/index.pt_BR.html).
+   Ou siga os próximos passos.
 
-4. Instale a biblioteca *flask* e a extensão *flask_socketio*:
+5. Instale a biblioteca *flask* e a extensão *flask_socketio*:
 ```bash
    pip install flask flask-socketio
    ```
